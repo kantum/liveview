@@ -24,8 +24,7 @@
           figlet
           elixir
           erlang
-          gnumake
-          openssl
+          flyctl
         ]
         ++ lib.optionals (system == "aarch64-darwin") ([
           terminal-notifier

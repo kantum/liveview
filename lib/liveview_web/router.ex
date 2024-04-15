@@ -8,6 +8,7 @@ defmodule LiveviewWeb.Router do
     plug :put_root_layout, html: {LiveviewWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug LiveviewWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
@@ -18,7 +19,29 @@ defmodule LiveviewWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    # resources "/users", UserController
+    # resources "/posts", PostController, only: [:index, :show]
+    # resources "/comments", CommentController, except: [:delete]
+    # resources "/reviews", ReviewController
+    get "/hello", HelloController, :index
+    get "/hello/:messenger", HelloController, :show
   end
+
+  # scope "/admin", LiveviewWeb.Admin do
+  #   pipe_through :browser
+  #
+  #   resources "/reviews", ReviewController
+  # end
+
+  # scope "/api", LiveviewWeb.Api, as: :api do
+  #   pipe_through :api
+  #
+  #   scope "/v1", V1, as: :v1 do
+  #     resources "/images",  ImageController
+  #     resources "/reviews", ReviewController
+  #     resources "/users",   UserController
+  #   end
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", LiveviewWeb do
