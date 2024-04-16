@@ -2,7 +2,7 @@ defmodule LiveviewWeb.Router do
   use LiveviewWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {LiveviewWeb.Layouts, :root}
@@ -25,6 +25,7 @@ defmodule LiveviewWeb.Router do
     # resources "/reviews", ReviewController
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+    get "/redirect_test", PageController, :redirect_test
   end
 
   # scope "/admin", LiveviewWeb.Admin do
