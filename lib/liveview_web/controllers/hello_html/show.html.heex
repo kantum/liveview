@@ -62,4 +62,31 @@
   >
     Toggle Dark Mode
   </button>
+  <%= if @some_condition do %>
+    <p>Some condition is true for user: <%= @messenger %></p>
+  <% else %>
+    <p>Some condition is false for user: <%= @messenger %></p>
+  <% end %>
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>Power</th>
+    </tr>
+    <%= for number <- 1..10 do %>
+      <tr>
+        <td><%= number %></td>
+        <td><%= number * number %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= "<b>Bold?</b>" %>
+  <br />
+  <%= raw("<b>Bold?</b>") %>
+  <div title="My div" class={@class}>
+    <p>Hello <%= @username %></p>
+  </div>
+  <div :if={@some_condition}>true true true</div>
+  <ul>
+    <li :for={item <- @items}><%= item.name %></li>
+  </ul>
 </section>

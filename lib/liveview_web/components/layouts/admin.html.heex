@@ -1,0 +1,21 @@
+<div class="grid h-screen grid-cols-12">
+  <aside class="col-span-3 p-4">
+    <nav>
+      <ul class="grid gap-2">
+        <%= for route <- LiveviewWeb.Router.__routes__() do %>
+          <li>
+            <a
+              href={route.path}
+              class="block rounded bg-gray-200 p-2 hover:brightness-150 dark:bg-gray-800"
+            >
+              <%= route.path %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </aside>
+  <main class="col-span-9 p-4">
+    <%= @inner_content %>
+  </main>
+</div>

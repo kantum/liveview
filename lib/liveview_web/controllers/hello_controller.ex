@@ -20,6 +20,15 @@ defmodule LiveviewWeb.HelloController do
     conn
     # |> Plug.Conn.assign(:messenger, messenger)
     |> assign(:messenger, messenger)
+    |> assign(:username, messenger)
+    |> put_layout(html: :admin)
+    |> assign(:some_condition, true)
+    |> assign(:items, [
+      %{:name => "bertrand"},
+      %{:name => "josiane"},
+      %{:name => "sylvain"}
+    ])
+    |> assign(:class, "rounded p-2 bg-green-800")
     |> assign(:receiver, "Kantum")
     |> render(:show)
 
