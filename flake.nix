@@ -25,6 +25,7 @@
           elixir
           erlang
           flyctl
+          postgresql
         ]
         ++ lib.optionals (system == "aarch64-darwin") ([
           terminal-notifier
