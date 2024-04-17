@@ -17,11 +17,12 @@ defmodule LiveviewWeb.HelloController do
   end
 
   def show(conn, %{"messenger" => messenger}) do
-  conn
-  # |> Plug.Conn.assign(:messenger, messenger)
-  |> assign(:messenger, messenger)
-  |> assign(:receiver, "Kantum")
-  |> render(:show)
+    conn
+    # |> Plug.Conn.assign(:messenger, messenger)
+    |> assign(:messenger, messenger)
+    |> assign(:receiver, "Kantum")
+    |> render(:show)
+
     # render(conn, :show, messenger: messenger)
     # text(conn, "From messenger #{messenger}")
     # json(conn, %{id: messenger})

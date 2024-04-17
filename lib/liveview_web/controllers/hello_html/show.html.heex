@@ -1,9 +1,65 @@
 <section>
-  <p>Locale: <%= @locale %></p>
-  <h2 class="bg-blue-800 text-white rounded-lg p-2">
-    Hello <%= @messenger %>, from Phoenix!
-  </h2>
-  <h2>
-  here is the receiver: <%= @receiver %>
-  </h2>
+  <div class="grid gap-2 ">
+    <p>Locale: <%= @locale %></p>
+    <h2 class="rounded-lg bg-blue-800 p-2 text-white">
+      Hello <%= @messenger %>, from Phoenix!
+    </h2>
+    <h2>
+      here is the receiver: <%= @receiver %>
+    </h2>
+    <.greet messenger={@messenger} />
+    <.greet />
+    <LiveviewWeb.HelloHTML.greet messenger={@messenger} />
+  </div>
+  <div x-data="{ open: false }" class="relative text-left">
+    <button
+      @click="open = !open"
+      @keydown.escape.window="open = false"
+      @click.away="open = false"
+      class="flex h-8 items-center border border-black pr-2 pl-3 focus:outline-none"
+    >
+      <span class="text-sm leading-none">
+        Options
+      </span>
+      <svg
+        class="mt-px ml-2 h-4 w-4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </button>
+    <div
+      x-cloak
+      x-show="open"
+      x-transition:enter="transition ease-out duration-100"
+      x-transition:enter-start="transform opacity-0 scale-95"
+      x-transition:enter-end="transform opacity-100 scale-100"
+      x-transition:leave="transition ease-in duration-75"
+      x-transition:leave-start="transform opacity-100 scale-100"
+      x-transition:leave-end="transform opacity-0 scale-95"
+      class="shadow-xs absolute mt-1 flex w-40 flex-col border border-black"
+    >
+      <a class="flex h-8 items-center px-3 text-sm hover:bg-gray-200" href="#">Settings</a>
+      <a class="flex h-8 items-center px-3 text-sm hover:bg-gray-200" href="#">Support</a>
+      <a class="flex h-8 items-center px-3 text-sm hover:bg-gray-200" href="#">Sign Out</a>
+    </div>
+  </div>
+  <button
+    x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+    x-init="
+       darkMode && document.documentElement.classList.add('dark');
+       $watch('darkMode', value => {
+         document.documentElement.classList.toggle('dark', value);
+         localStorage.setItem('darkMode', value.toString());
+       })"
+    @click="darkMode = !darkMode"
+  >
+    Toggle Dark Mode
+  </button>
 </section>
