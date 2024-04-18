@@ -19,7 +19,6 @@ defmodule Liveview.Catalog do
   """
   def list_products do
     Repo.all(Product)
-    |> Repo.preload(:products)
   end
 
   @doc """
