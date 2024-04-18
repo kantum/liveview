@@ -50,6 +50,6 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
-import Alpine from "alpinejs";
+import Alpine from "../vendor/alpine.js";
 window.Alpine = Alpine;
 Alpine.start();
