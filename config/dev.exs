@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :liveview, Liveview.Repo,
-  username: {:system, "POSTGRES_USER"},
-  password: {:system, "POSTGRES_PASSWORD"},
-  hostname: {:system, "POSTGRES_HOST"},
-  database: {:system, "POSTGRES_DB"},
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "liveview_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
