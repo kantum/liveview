@@ -30,16 +30,17 @@ defmodule LiveviewWeb.PageController do
   #   redirect(conn, external: "https://elixir-lang.org/")
   # end
 
-  # def home(conn, _params) do
-  #   conn
-  #   |> put_flash(:warning, "We have a problem")
-  #   |> render(:home, layout: false)
-  # end
   def home(conn, _params) do
     conn
-    |> put_flash(:warning, "Let's pretend we have an error.")
-    |> redirect(to: ~p"/redirect_test")
+    |> put_flash(:warning, "We have a problem")
+    |> render(:home, layout: false)
   end
+
+  # def home(conn, _params) do
+  #   conn
+  #   |> put_flash(:warning, "Let's pretend we have an error.")
+  #   |> redirect(to: ~p"/redirect_test")
+  # end
 
   def redirect_test(conn, _params) do
     render(conn, :home, layout: false)

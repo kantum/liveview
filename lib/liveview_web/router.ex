@@ -26,6 +26,7 @@ defmodule LiveviewWeb.Router do
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
     get "/redirect_test", PageController, :redirect_test
+    resources "/products", ProductController
   end
 
   # scope "/admin", LiveviewWeb.Admin do
