@@ -8,7 +8,7 @@
         v<%= Application.spec(:phoenix, :vsn) %>
       </p>
     </div>
-    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
+    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900 dark:text-zinc-100">
       <a href="https://twitter.com/elixirphoenix" class="hover:text-zinc-700">
         @elixirphoenix
       </a>
@@ -17,10 +17,23 @@
       </a>
       <a
         href="https://hexdocs.pm/phoenix/overview.html"
-        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80"
+        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80 dark:bg-zinc-800"
       >
         Get Started <span aria-hidden="true">&rarr;</span>
       </a>
+      <button
+        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zin-200/80 dark:bg-zinc-800"
+        x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+        x-init="
+       darkMode && document.documentElement.classList.add('dark');
+       $watch('darkMode', value => {
+         document.documentElement.classList.toggle('dark', value);
+         localStorage.setItem('darkMode', value.toString());
+       })"
+        @click="darkMode = !darkMode"
+      >
+        Toggle Dark Mode
+      </button>
     </div>
   </div>
 </header>

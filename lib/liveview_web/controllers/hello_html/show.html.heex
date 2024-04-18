@@ -50,18 +50,6 @@
       <a class="flex h-8 items-center px-3 text-sm hover:bg-gray-200" href="#">Sign Out</a>
     </div>
   </div>
-  <button
-    x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
-    x-init="
-       darkMode && document.documentElement.classList.add('dark');
-       $watch('darkMode', value => {
-         document.documentElement.classList.toggle('dark', value);
-         localStorage.setItem('darkMode', value.toString());
-       })"
-    @click="darkMode = !darkMode"
-  >
-    Toggle Dark Mode
-  </button>
   <%= if @some_condition do %>
     <p>Some condition is true for user: <%= @messenger %></p>
   <% else %>
