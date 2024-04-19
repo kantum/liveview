@@ -33,6 +33,8 @@ defmodule LiveviewWeb.Router do
 
     get "/cart", CartController, :show
     put "/cart", CartController, :update
+
+    resources "/orders", OrderController, only: [:create, :show]
   end
 
   # scope "/admin", LiveviewWeb.Admin do
