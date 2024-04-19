@@ -1,6 +1,7 @@
 defmodule Liveview.Catalog.Product do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Liveview.Catalog.Category
 
   schema "products" do
     field :description, :string
@@ -9,6 +10,8 @@ defmodule Liveview.Catalog.Product do
     field :views, :integer
 
     timestamps(type: :utc_datetime)
+
+    many_to_many :categories, Category, join_through: "product_categories", on_replace: :delete
   end
 
   @doc false
