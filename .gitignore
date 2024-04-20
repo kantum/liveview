@@ -37,7 +37,6 @@ npm-debug.log
 
 ### direnv ###
 .direnv
-.envrc
 
 ### Elixir ###
 /_build
