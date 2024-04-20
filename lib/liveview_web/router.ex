@@ -2,7 +2,7 @@ defmodule LiveviewWeb.Router do
   use LiveviewWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html", "json"]
+    plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, html: {LiveviewWeb.Layouts, :root}
@@ -35,28 +35,14 @@ defmodule LiveviewWeb.Router do
     put "/cart", CartController, :update
 
     resources "/orders", OrderController, only: [:create, :show]
+    resources "/posts", PostController
   end
 
-  # scope "/admin", LiveviewWeb.Admin do
-  #   pipe_through :browser
-  #
-  #   resources "/reviews", ReviewController
-  # end
-
-  # scope "/api", LiveviewWeb.Api, as: :api do
-  #   pipe_through :api
-  #
-  #   scope "/v1", V1, as: :v1 do
-  #     resources "/images",  ImageController
-  #     resources "/reviews", ReviewController
-  #     resources "/users",   UserController
-  #   end
-  # end
-
-  # Other scopes may use custom stacks.
   scope "/api", LiveviewWeb do
     pipe_through :api
+
     resources "/urls", UrlController, except: [:new, :edit]
+    resources "/posts", Api.PostController
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
