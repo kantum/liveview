@@ -1,10 +1,14 @@
-defmodule Liveview.MixProject do
+defmodule Ines.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :liveview,
+      app: :ines,
       version: "0.1.0",
+      build_path: "../../_build",
+      config_path: "../../config/config.exs",
+      deps_path: "../../deps",
+      lockfile: "../../mix.lock",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -18,7 +22,7 @@ defmodule Liveview.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Liveview.Application, []},
+      mod: {Ines.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -43,7 +47,13 @@ defmodule Liveview.MixProject do
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
-      {:tailwind_formatter, "~> 0.4.0", only: [:dev, :test], runtime: false},
+      {:heroicons,
+       github: "tailwindlabs/heroicons",
+       tag: "v2.1.1",
+       sparse: "optimized",
+       app: false,
+       compile: false,
+       depth: 1},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},
@@ -68,10 +78,10 @@ defmodule Liveview.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind liveview", "esbuild liveview"],
+      "assets.build": ["tailwind ines", "esbuild ines"],
       "assets.deploy": [
-        "tailwind liveview --minify",
-        "esbuild liveview --minify",
+        "tailwind ines --minify",
+        "esbuild ines --minify",
         "phx.digest"
       ]
     ]
