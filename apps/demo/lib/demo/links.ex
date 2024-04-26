@@ -20,7 +20,8 @@ defmodule Demo.Links do
   def list_links(user_id) do
     Repo.all(
       from l in Link,
-        where: l.user_id == ^user_id
+        where: l.user_id == ^user_id,
+        order_by: [desc: l.inserted_at]
     )
   end
 
